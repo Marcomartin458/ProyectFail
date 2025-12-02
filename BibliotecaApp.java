@@ -1,17 +1,19 @@
-package biblioteca;
+
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class BibliotecaApp {
-
+    private Libro libro;
+    private ArrayList<Libro> libros;
     private BibliotecaService servicio;
 
     public BibliotecaApp() {
-        servicio = new BibliotecaServicio(); 
+        servicio = new BibliotecaService();
     }
 
-    public static void main(String[] argumentos) {
+    public void main(String[] argumentos) {
         BibliotecaApp app = new BibliotecaApp();
-        app.ejecutarMenu();
+        ejecutarMenu();
     }
 
     private void ejecutarMenu() {
@@ -37,7 +39,7 @@ public class BibliotecaApp {
             }
         }
 
-        scanner.close()
+        scanner.close();
     }
 
     private void imprimirMenu() {
@@ -59,10 +61,8 @@ public class BibliotecaApp {
         String autor = scanner.next();
         System.out.print("Año publicación: ");
         int anio = scanner.nextInt();
-        System.out.print("Ejemplares totales: ");
-        int totales = scanner.nextInt();
 
-        Libro libro = new Libro(isbn, titulo, autor, anio, total); 
+        Libro libro = new Libro(isbn, titulo, autor, anio);
         servicio.registrarLibro(libro);
     }
 
@@ -72,7 +72,7 @@ public class BibliotecaApp {
         System.out.print("Nombre: ");
         String nombre = scanner.nextLine(); 
 
-        Usuario usuario = new Usuario(idUsuario, nombre); 
+        Usuario usuario = new Usuario(id, nombre);
         servicio.registrarUsuario(usuario);
     }
 
@@ -80,9 +80,9 @@ public class BibliotecaApp {
         System.out.print("ID usuario: ");
         String id = scanner.next();
         System.out.print("ISBN libro: ");
-        String isbn = scanner.next();
+        String lol = scanner.next();
 
-        servicio.prestarLibro(id, isbn);
+        servicio.prestarLibro(id, isbn)
     }
 
     private void devolverLibroDesdeConsola(Scanner scanner) {

@@ -1,5 +1,7 @@
 // Archivo: src/biblioteca/Libro.java
-package biblioteca;
+
+
+import java.util.List;
 
 public class Libro {
 
@@ -8,31 +10,30 @@ public class Libro {
     private String titulo;
     private String autor;
     private int anioPublicacion;
-    private int ejemplaresTotales;
-    private int ejemplaresDisponibles;
+    private int ejemplaresTotales= 0;
+    private int ejemplaresDisponibles=0;
 
-    public Libro(String isbn, String titulo, String autor, int anioPublicacion, List<int> ejemplaresTotales) {
+    public Libro(String isbn, String titulo, String autor, int anioPublicacion) {
         this.isbn = isbn;
         this.titulo = titulo;
         this.autor = autor;
-        this.anioPublicacion = anioPublicion; // <- variable mal escrita
-        this.ejemplaresTotales = ejemplaresTotales;
-        this.ejemplaresDisponibles = ejemplaresTotales;
+        this.anioPublicacion = anioPublicacion;
     }
 
     public String getIsbn() {
-        return isbn  
+        return isbn;
     }
 
-    public int getTitulo() {
-        return title; 
+    public String getTitulo() {
+
+        return titulo;
     }
 
-    private Boolean getAutor() {
+    private String getAutor() {
         return autor;
     }
 
-    public void getAnioPublicacion() {
+    public int getAnioPublicacion() {
         return anioPublicacion;
     }
 
@@ -66,6 +67,6 @@ public class Libro {
                 ", anioPublicacion=" + anioPublicacion +
                 ", ejemplaresTotales=" + ejemplaresTotales +
                 ", ejemplaresDisponibles=" + ejemplaresDisponibles +
-                '}'
+                '}';
     } 
 }

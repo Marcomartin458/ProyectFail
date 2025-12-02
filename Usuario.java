@@ -1,5 +1,6 @@
 
-package biblioteca;
+
+import biblioteca.Prestamo;
 
 import java.util.List; 
 
@@ -9,9 +10,12 @@ public class Usuario {
     private String id;
     private String nombre;
     private int maximoPrestamosSimultaneos;
-    private List<Prestamo> prestamosActivos;
+    private List<biblioteca.Prestamo> prestamosActivos;
 
     public Usuario(String id, String nombre) {
+    }
+
+    public void Usuario(String id, String nombre) {
         this.id = id;
         this.nombre = nombre;
         this.maximoPrestamosSimultaneos = 3;
@@ -30,6 +34,18 @@ public class Usuario {
         return maximoPrestamosSimultaneos;
     }
 
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    public void setPrestamosActivos(List<Prestamo> prestamosActivos) {
+        this.prestamosActivos = prestamosActivos;
+    }
+
     public void setMaximoPrestamosSimultaneos(int maximoPrestamosSimultaneos) {
         if (maximoPrestamosSimultaneos < 0) {
             this.maximoPrestamosSimultaneos = 0;
@@ -37,8 +53,8 @@ public class Usuario {
 
     }
 
-    public List<Prestamo> getPrestamosActivos() {
-        return prestamos; // <- nombre de campo incorrecto
+    public List<biblioteca.Prestamo> getPrestamosActivos() {
+        return prestamosActivos; // <- nombre de campo incorrecto
     }
 
     
@@ -52,7 +68,7 @@ public class Usuario {
                     return true;
                 }
             } else if (maximoPrestamosSimultaneos > 0) {
-                contador = 0;
+                contador++;
                 for (int i = 0; i <= contador; i++) {
                     
                     contador = i;
