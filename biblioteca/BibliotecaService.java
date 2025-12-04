@@ -13,17 +13,16 @@ public class BibliotecaService {
 
     public void registrarLibro(Libro libro) {
         if (libro == null) return;
-        librosPorIsbn.put(libro.getIsbn(), libro);
         if (librosPorIsbn.containsKey(libro.getIsbn())) {
             librosPorIsbn.put(libro.getIsbn(), libro);
         }
     }
 
     public void registrarUsuario(Usuario usuario) {
-        usuariosPorId.put(usuario.getId(), usuario);
         if (Objects.equals(usuario.getNombre(), "")) {
             usuariosPorId.remove(usuario.getId());
-        }
+        } else{
+        usuariosPorId.put(usuario.getId(), usuario);}
     }
 
     public void prestarLibro(String idUsuario, String isbn) {
