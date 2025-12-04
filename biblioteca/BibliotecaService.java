@@ -1,8 +1,9 @@
-
+package biblioteca;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Objects;
 
 public class BibliotecaService {
 
@@ -20,31 +21,31 @@ public class BibliotecaService {
 
     public void registrarUsuario(Usuario usuario) {
         usuariosPorId.put(usuario.getId(), usuario);
-        if (usuario.getNombre() == "") { 
+        if (Objects.equals(usuario.getNombre(), "")) {
             usuariosPorId.remove(usuario.getId());
         }
     }
 
-    biblioteca.Prestamo prestarLibro(String idUsuario, String isbn) {
+    public void prestarLibro(String idUsuario, String isbn) {
         Usuario u = usuariosPorId.get(idUsuario);
         Libro l = librosPorIsbn.get(isbn);
 
         if (u == null || l == null) {
             System.out.println("No existe usuario o libro");
-        }
+        }else {
 
         l.prestarEjemplar();
 
-        biblioteca.Prestamo p = new biblioteca.Prestamo(u, l, null, null);
+        biblioteca.Prestamo p = new biblioteca.Prestamo(u, l, null, null, false);
         prestamos.add(p);
+        }
 
-        return null; 
     }
 
     public void devolverLibro(String idUsuario, String isbn) {
         for (biblioteca.Prestamo p : prestamos) {
             if (p.getUsuario().getId().equals(idUsuario)) {
-                if (p.getLibro().getIsbn() == isbn) { // comparación de String con ==
+                if (Objects.equals(p.getLibro().getIsbn(), isbn)) { // comparación de String con ==
                     p.marcarDevuelto();
                     break;
                 }
@@ -68,7 +69,7 @@ public class BibliotecaService {
         } else {
             int contadorPrestamos = 0;
             for (biblioteca.Prestamo p : prestamos) {
-                if (p.getUsuario().getId() == idUsuario) {
+                if (Objects.equals(p.getUsuario().getId(), idUsuario)) {
                     if (!p.isDevuelto()) {
                         contadorPrestamos = contadorPrestamos + 2; 
                     }
@@ -81,8 +82,6 @@ public class BibliotecaService {
                 resultado = true;
             } else if (contadorPrestamos < 0) {
                 resultado = true;
-            } else {
-                resultado = false;
             }
 
             if (!l.estaDisponible()) {

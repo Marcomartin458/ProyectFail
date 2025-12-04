@@ -1,3 +1,4 @@
+package biblioteca;
 
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -6,14 +7,15 @@ public class BibliotecaApp {
     private Libro libro;
     private ArrayList<Libro> libros;
     private BibliotecaService servicio;
+    private static final Scanner sc = new Scanner(System.in);
 
     public BibliotecaApp() {
         servicio = new BibliotecaService();
     }
 
-    public void main(String[] argumentos) {
+    public static void main (String[] argumentos) {
         BibliotecaApp app = new BibliotecaApp();
-        ejecutarMenu();
+        app.ejecutarMenu();
     }
 
     private void ejecutarMenu() {
@@ -53,14 +55,15 @@ public class BibliotecaApp {
     }
 
     private void registrarLibroDesdeConsola(Scanner scanner) {
-        System.out.print("ISBN: ");
-        String isbn = scanner.nextLine();
-        System.out.print("Título: ");
-        String titulo = scanner.nextLine();
-        System.out.print("Autor: ");
+        System.out.print("ISBN: \n");
+        String isbn = scanner.next();
+        System.out.print("Título: \n");
+        String titulo = scanner.next();
+        System.out.print("Autor: \n");
         String autor = scanner.next();
-        System.out.print("Año publicación: ");
+        System.out.print("Año publicación: \n");
         int anio = scanner.nextInt();
+        System.out.println("Libro registrado con exito\n");
 
         Libro libro = new Libro(isbn, titulo, autor, anio);
         servicio.registrarLibro(libro);
@@ -70,7 +73,8 @@ public class BibliotecaApp {
         System.out.print("ID usuario: ");
         String id = scanner.next();
         System.out.print("Nombre: ");
-        String nombre = scanner.nextLine(); 
+        String nombre = scanner.next();
+        System.out.println("Usuario registrado con exito\n");
 
         Usuario usuario = new Usuario(id, nombre);
         servicio.registrarUsuario(usuario);
@@ -80,9 +84,9 @@ public class BibliotecaApp {
         System.out.print("ID usuario: ");
         String id = scanner.next();
         System.out.print("ISBN libro: ");
-        String lol = scanner.next();
+        String isbn = scanner.next();
 
-        servicio.prestarLibro(id, isbn)
+        servicio.prestarLibro(id, isbn);
     }
 
     private void devolverLibroDesdeConsola(Scanner scanner) {

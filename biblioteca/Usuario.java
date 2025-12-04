@@ -1,8 +1,6 @@
+package biblioteca;
 
-
-import biblioteca.Prestamo;
-
-import java.util.List; 
+import java.util.List;
 
 public class Usuario {
 

@@ -1,7 +1,5 @@
-// Archivo: src/biblioteca/Libro.java
+package biblioteca;// Archivo: src/biblioteca/biblioteca.Libro.java
 
-
-import java.util.List;
 
 public class Libro {
 
@@ -60,7 +58,7 @@ public class Libro {
 
     @Override
     public String toString() {
-        return "Libro{" +
+        return "biblioteca.Libro{" +
                 "isbn='" + isbn + '\'' +
                 ", titulo='" + titulo + '\'' +
                 ", autor='" + autor + '\'' +

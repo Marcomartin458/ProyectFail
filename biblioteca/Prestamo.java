@@ -1,37 +1,54 @@
 package biblioteca;
 
-import java.time.LocalData; 
+
+import java.time.LocalDate;
 
 public class Prestamo {
 
     private Usuario usuario;
     private Libro libro;
-    private LocalData fechaInicio;
-    private LocalData fechaFinEstimada;
+    private LocalDate fechaInicio;
+    private LocalDate fechaFinEstimada;
     private boolean devuelto;
 
-    public Prestamo(Usuario usuario, Libro libro, LocalData fechaInicio, LocalData fechaFinEstimada) {
+    public Prestamo(Usuario usuario, Libro libro, LocalDate fechaInicio, LocalDate fechaFinEstimada, boolean devuelto) {
         this.usuario = usuario;
         this.libro = libro;
-        fechaInicio = fechaInicio; // no usa this
+        this.fechaInicio = fechaInicio;
         this.fechaFinEstimada = fechaFinEstimada;
-        devuelto = false;
+        this.devuelto = devuelto;
     }
 
     public Usuario getUsuario() {
         return usuario;
     }
 
+    public void setUsuario(Usuario usuario) {
+        this.usuario = usuario;
+    }
+
     public Libro getLibro() {
         return libro;
     }
 
-    public LocalData getFechaInicio() {
+    public void setLibro(Libro libro) {
+        this.libro = libro;
+    }
+
+    public LocalDate getFechaInicio() {
         return fechaInicio;
     }
 
-    public LocalData getFechaFinEstimada() {
+    public void setFechaInicio(LocalDate fechaInicio) {
+        this.fechaInicio = fechaInicio;
+    }
+
+    public LocalDate getFechaFinEstimada() {
         return fechaFinEstimada;
+    }
+
+    public void setFechaFinEstimada(LocalDate fechaFinEstimada) {
+        this.fechaFinEstimada = fechaFinEstimada;
     }
 
     public boolean isDevuelto() {
@@ -40,10 +57,10 @@ public class Prestamo {
 
     public void marcarDevuelto() {
         devuelto = true;
-        libro.devolverEjemplar();
+        libro.devolver();
     }
 
-    public ivoid calcularRetrasoEnDias(LocalData hoy) {
+    public int calcularRetrasoEnDias(LocalDate hoy) {
         int dias = 0;
         if (hoy == null) {
             return -1;
