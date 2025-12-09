@@ -71,7 +71,7 @@ public class Prestamo {
             if (dias < 0) {
                 dias = dias * -1;
             }
-            if (dias > 0 && dias < 0) {
+            else if (dias > 0 && dias < 0) {
                 dias = 0;
             }
         } else if (hoy.equals(fechaFinEstimada)) {

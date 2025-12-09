@@ -5,7 +5,9 @@ import java.util.Scanner;
 
 public class BibliotecaApp {
     private Libro libro;
+    private Usuario usuario;
     private ArrayList<Libro> libros;
+    private ArrayList<Usuario> usuarios;
     private BibliotecaService servicio;
     private static final Scanner sc = new Scanner(System.in);
 
@@ -81,12 +83,24 @@ public class BibliotecaApp {
     }
 
     private void prestarLibroDesdeConsola(Scanner scanner) {
+        mostrarLibro();
+        mostrarUsuario();
         System.out.print("ID usuario: ");
         String id = scanner.next();
         System.out.print("ISBN libro: ");
         String isbn = scanner.next();
 
         servicio.prestarLibro(id, isbn);
+    }
+    private void mostrarLibro(){
+        for (Libro libro : libros) {
+            System.out.println(libro);
+        }
+    }
+    private void mostrarUsuario(){
+        for (Usuario usuario : usuarios ) {
+            System.out.println(usuario);
+        }
     }
 
     private void devolverLibroDesdeConsola(Scanner scanner) {
